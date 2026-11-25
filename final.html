@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECOVERED // FINAL RECORD</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #080a0c;
+  color: #b9c1bd;
+  font-family: "Courier New", monospace;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  border: 1px solid #343d3a;
+  padding: 35px 25px;
+  background: #101513;
+  box-shadow: 0 0 25px #18251e;
+}
+
+h1 {
+  color: #8ab99b;
+  letter-spacing: 4px;
+  font-size: 23px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #39443e;
+  margin: 25px 0;
+}
+
+.muted {
+  color: #69736d;
+  font-size: 12px;
+}
+
+.code {
+  font-size: 22px;
+  color: #a4d4b0;
+  letter-spacing: 3px;
+  line-height: 2;
+  margin: 25px 0;
+}
+
+input {
+  background: #080b09;
+  border: 1px solid #53685a;
+  color: #b9e4c2;
+  padding: 13px;
+  width: 80%;
+  max-width: 280px;
+  font-family: inherit;
+  font-size: 16px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+button {
+  background: #263b2e;
+  color: #c2e5cb;
+  border: 1px solid #63816b;
+  padding: 12px 25px;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+button:hover {
+  background: #385640;
+}
+
+#feedback {
+  color: #d17d7d;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+#birthday {
+  display: none;
+  animation: reveal 2s ease;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  background: #f1e9d8;
+  color: #34332e;
+  padding: 35px 20px;
+  margin-top: 30px;
+  font-family: Georgia, serif;
+  border: 5px double #b9a77d;
+}
+
+.card h2 {
+  font-size: 29px;
+  color: #72543e;
+}
+
+.card p {
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.card .signature {
+  margin-top: 30px;
+  font-style: italic;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="puzzle">
+
+    <p class="muted">RECOVERED SYSTEM // FINAL RECORD</p>
+
+    <h1>ARCHIVE TERMINAL</h1>
+
+    <hr>
+
+    <p>ALL RECORDS RECOVERED.</p>
+
+    <p>ONE FINAL RECORD REMAINS LOCKED.</p>
+    <p>REFERENCE DETECTED THROUGHOUT RECOVERED FILES:</p>
+    <div class="code">035</div>
+    <p class="muted">IDENTITY VERIFICATION REQUIRED.</p>
+
+    <hr>
+
+    <p>ENTER DECRYPTED MESSAGE:</p>
+
+    <input
+      type="text"
+      id="answer"
+      placeholder="ENTER REFERENCE"
+      autocomplete="off"
+    >
+
+    <br>
+
+    <button onclick="unlock()">DECRYPT</button>
+
+    <p id="feedback"></p>
+
+  </div>
+
+  <div id="birthday">
+
+    <p class="muted">SYSTEM MESSAGE // RECOVERY COMPLETE</p>
+
+    <h1>ARCHIVE UNLOCKED</h1>
+
+    <p>...</p>
+
+    <p>Wait.</p>
+
+    <p>Something isn't right.</p>
+
+    <p>Why is there a birthday card in here?</p>
+
+    <hr>
+
+    <div class="card">
+
+      <h2>Happy 35th Birthday!</h2>
+
+      <p>
+        Well... you found it.
+      </p>
+
+      <p>
+        After all the strange recordings, hidden messages,
+        corrupted files and suspicious numbers,
+        there was only ever one thing waiting for you here.
+      </p>
+
+      <p>
+        I hope you have an absolutely fantastic birthday!
+        Here's to another year of adventures, memories,
+        laughter and many more mysteries.
+      </p>
+
+      <p class="signature">
+        From D.L. :)
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+function unlock() {
+
+  const answer = document
+    .getElementById("answer")
+    .value
+    .trim();
+
+  if (answer === "035") {
+
+    document.getElementById("puzzle").innerHTML = `
+      <p class="muted">RECOVERED SYSTEM // FINAL RECORD</p>
+      <h1>IDENTITY CONFIRMED</h1>
+      <hr>
+      <p>035 IS NOT A PASSWORD.</p>
+      <p>IT IS AN IDENTITY.</p>
+      <p>RESTORING FINAL RECORD...</p>
+      <p>SUBJECT AGE: 35</p>
+      <p>HAPPY BIRTHDAY.</p>
+    `;
+
+    setTimeout(() => {
+      document.getElementById("puzzle").style.display = "none";
+      document.getElementById("birthday").style.display = "block";
+      document.title = "HAPPY BIRTHDAY!";
+    }, 3000);
+
+  } else {
+
+    document.getElementById("feedback").textContent =
+      "ACCESS DENIED. REFERENCE NOT RECOGNISED.";
+
+  }
+
+}
+
+document.getElementById("answer").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") unlock();
+});
+
+</script>
+
+</body>
+</html>
